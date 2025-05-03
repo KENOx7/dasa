@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>Python Quiz</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .quiz-container {
+      width: 80%;
+      max-width: 700px;
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+      text-align: center;
+    }
+    .question {
+      font-size: 20px;
+      margin-bottom: 25px;
+      color: #00f9ff;
+      white-space: pre-wrap;
+    }
+    .option {
+      background: #333;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin: 8px 0;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-align: left;
+      white-space: pre-wrap;
+      max-height: 130px;
+      overflow-y: auto;
+    }
+    .option:hover {
+      background: #444;
+    }
+    .result {
+      margin-top: 20px;
+    }
+    .correct {
+      background-color: #2e7d32 !important;
+    }
+    .wrong {
+      background-color: #c62828 !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container" id="quiz"></div>
+
+  <script>
+    const questions = [
+      {
+        question: `Verilmiş natural ədədin tərsini çap edən proqram`,
+        answer: `a = int(input())\nS = 0\nwhile a > 0:\n    k = a % 10\n    a = a // 10\n    S = S * 10 + k\nprint(S)`
+      },
+      {
+        question: `1-dən 10-a kimi ədədlərin kvadratlarını çap edən proqram`,
+        answer: `i = 1\nwhile i <= 10:\n    print(i * i)\n    i = i + 1`
+      },
+      {
+        question: `Verilmiş natural ədədin tək rəqəmlərinin cəmini tapan proqram`,
+        answer: `a = int(input())\nS = 0\nwhile a > 0:\n    k = a % 10\n    a = a // 10\n    if k % 2 == 1:\n        S = S + k\nprint(S)`
+      },
+      {
+        question: `Verilmiş natural ədədin rəqəmlərinin cəmini çap edən proqram`,
+        answer: `a = int(input())\nS = 0\nwhile a > 0:\n    k = a % 10\n    a = a // 10\n    S = S + k\nprint(S)`
+      },
+      {
+        question: `1-dən n-ə qədər ədədlərin cəmini tapan proqram`,
+        answer: `i = 1\nS = 0\nn = int(input())\nwhile i <= n:\n    S = S + i\n    i = i + 1\nprint(S)`
+      },
+      {
+        question: `n natural ədədinin tək rəqəmlərinin cəmini və sayını tapan proqram`,
+        answer: `n = int(input())\nS = 0\nk = 0\nwhile n > 0:\n    t = n % 10\n    n = n // 10\n    if t % 2 == 1:\n        S = S + t\n        k = k + 1\nprint(S, k)`
+      },
+      {
+        question: `Verilmiş n ədədinin armstrong ədədi olub olmadığını yoxlayan proqram`,
+        answer: `n = int(input())\nx = n\nS = 0\nwhile n > 0:\n    t = n % 10\n    n = n // 10\n    S = S + t ** 3\nif S == x:\n    print("Yes")\nelse:\n    print("No")`
+      },
+      {
+        question: `Verilmiş n ədədinin palindrom olub olmadığını yoxlayan proqram`,
+        answer: `n = int(input())\nx = n\nS = 0\nwhile n > 0:\n    od = n % 10\n    n = n // 10\n    S = S * 10 + od\nif S == x:\n    print("Yes")\nelse:\n    print("No")`
+      },
+      {
+        question: `Fibonacci sırasının n həddini çap edən proqram`,
+        answer: `a = 1\nb = 1\ni = 2\nn = int(input())\nwhile i < n:\n    k = a + b\n    a = b\n    b = k\n    i = i + 1\nprint(k)`
+      },
+      {
+        question: `Verilmiş mətnində a simvollarının sayını tapan proqram`,
+        answer: `a = input()\nS = 0\nk = len(a)\nfor i in range(0, k):\n    if a[i] == 'a':\n        S = S + 1\nprint(S)`
+      }
+    ];
+
+    let current = 0;
+    let answers = [];
+
+    function shuffleOptions(correct, others) {
+      const all = [correct, ...others];
+      return all
+        .map(x => ({ sort: Math.random(), value: x }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(x => x.value);
+    }
+
+    function showQuestion() {
+      const q = questions[current];
+      const otherAnswers = questions.filter((_, i) => i !== current).slice(0, 3).map(q => q.answer);
+      const options = shuffleOptions(q.answer, otherAnswers);
+      document.getElementById('quiz').innerHTML = `
+        <div class="question">Sual ${current + 1}: ${q.question}</div>
+        ${options.map(opt => `<div class="option" onclick="chooseAnswer(this, \`${opt.replace(/`/g, '\\`')}\`)">${opt}</div>`).join('')}
+      `;
+    }
+
+    function chooseAnswer(el, selected) {
+      const correct = questions[current].answer;
+      const isCorrect = selected === correct;
+      answers.push({ question: questions[current].question, selected, correct });
+      current++;
+      if (current < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      let html = '<h2>Nəticə:</h2>';
+      answers.forEach((ans, i) => {
+        const correctClass = ans.selected === ans.correct ? 'correct' : 'wrong';
+        html += `
+          <div class="question">Sual ${i + 1}: ${ans.question}</div>
+          <div class="option ${correctClass}">${ans.selected}</div>
+        `;
+      });
+      document.getElementById('quiz').innerHTML = html;
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>
