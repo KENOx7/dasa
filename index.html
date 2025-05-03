@@ -108,7 +108,196 @@ const questions = [
     question: `Verilmiş mətnində a simvollarının sayını tapan proqram`,
     correct: `a = input()\nS = 0\nk = len(a)\nfor i in range(0, k):\n    if a[i] == 'a':\n        S = S + 1\nprint(S)`
   },
+  {
+    question: `Verilmiş mətnə 'a' simvolunun neçə dəfə daxil olduğunu çap edən proqram`,
+    correct: `a = input()\ns = 0\nk = len(a)\nfor i in range(0, k):\n    if a[i] == 'a':\n        s += 1\nprint(s)`
+  },
+  {
+    question: `Verilmiş ədədin faktoriyalarının cəmini hesablayan proqram`,
+    correct: `n = int(input())\ns = 1\nfor i in range(1, n + 1):\n    s = s * i\nprint(s)`
+  },
+  {
+    question: `1-dən 50-ə qədər olan tək ədədlərin cəmini çap edən proqram (dəyişən: s)`,
+    correct: `s = 0\nfor i in range(1, 51):\n    if i % 2 == 0:\n        continue\n    s = s + i\nprint(s)`
+  },
+  {
+    question: `Verilmiş mətnin dəyərlərini tərsinə çap edən proqram`,
+    correct: `a = input()\ns = ''\nfor i in a:\n    s = i + s\nprint(s)`
+  },
+  {
+    question: `Verilmiş mətnin simvollarının sayını çap edən proqram`,
+    correct: `a = input()\ns = 0\nfor i in a:\n    s = s + 1\nprint(s)`
+  },
+  {
+    question: `Verilmiş mətnin simvollarını alt-alta çap edən proqram`,
+    correct: `a = input()\nfor i in a:\n    print(i)`
+  },
+  {
+    question: `1-dən 100-ə qədər olan tək ədədlərin cəmini çap edən proqram`,
+    correct: `s = 0\nfor i in range(1, 101, 2):\n    s = s + i\nprint(s)`
+  },
+  {
+    question: `b ədədinin tam bölənlərini çap edən, natamam bölənlərin cəmini tapan proqram`,
+    correct: `s = 0\nb = 16\nfor i in range(1, b + 1):\n    if b % i == 0:\n        print(i)\n    else:\n        s = s + i\nprint(s)`
+  },
+  {
+    question: `Verilmiş 3 ədədin müsbət olanlarının cəmini, mənfi olanlarının sayını çap edən proqram`,
+    correct: `s = 0\nk = 0\nfor i in range(1, 4):\n    x = int(input())\n    if x <= 0:\n        k = k + 1\n    else:\n        s = s + x\nprint(s, k)`
+  },
+  {
+    question: `Verilmiş n ədədin cəmini çap edən proqram`,
+    correct: `n = int(input())\ns = 0\nfor i in range(1, n + 1):\n    x = int(input())\n    s = s + x\nprint(s)`
+  },
+  {
+    question: `a siyahısının hər elementindən birini b siyahısına əlavə edən proqram`,
+    correct: `a = [1, 2, 3, 2, 3, 2, 4]\nb = []\nfor i in a:\n    if i not in b:\n        b.append(i)`
+  },
+  {
+    question: `a siyahısının unikal elementlərini b siyahısına əlavə edən proqram`,
+    correct: `a = [1, 2, 3, 2, 3, 2, 4]\nb = []\nfor i in a:\n    if a.count(i) == 1:\n        b.append(i)`
+  }
+  {
+    question: `Verilmiş natural ədədin tərsini çap edən proqram`,
+    correct: `a = int(input())\nS = 0\nwhile a > 0:\n    k = a % 10\n    a = a // 10\n    S = S * 10 + k\nprint(S)`
+  },
+  {
+    question: `1-dən 10-a kimi ədədlərin kvadratlarını çap edən proqram`,
+    correct: `i = 1\nwhile i <= 10:\n    print(i * i)\n    i = i + 1`
+  },
+  {
+    question: `Verilmiş natural ədədin tək rəqəmlərinin cəmini tapan proqram`,
+    correct: `a = int(input())\nS = 0\nwhile a > 0:\n    k = a % 10\n    a = a // 10\n    if k % 2 == 1:\n        S = S + k\nprint(S)`
+  },
+  {
+    question: `Verilmiş natural ədədin rəqəmlərinin cəmini çap edən proqram`,
+    correct: `a = int(input())\nS = 0\nwhile a > 0:\n    k = a % 10\n    a = a // 10\n    S = S + k\nprint(S)`
+  },
+  {
+    question: `1-dən n-ə qədər ədədlərin cəmini tapan proqram`,
+    correct: `i = 1\nS = 0\nn = int(input())\nwhile i <= n:\n    S = S + i\n    i = i + 1\nprint(S)`
+  },
+  {
+    question: `n natural ədədinin tək rəqəmlərinin cəmini və sayını tapan proqram`,
+    correct: `n = int(input())\nS = 0\nk = 0\nwhile n > 0:\n    t = n % 10\n    n = n // 10\n    if t % 2 == 1:\n        S = S + t\n        k = k + 1\nprint(S, k)`
+  },
+  {
+    question: `Verilmiş n ədədinin armstrong ədədi olub olmadığını yoxlayan proqram`,
+    correct: `n = int(input())\nx = n\nS = 0\nwhile n > 0:\n    t = n % 10\n    n = n // 10\n    S = S + t ** 3\nif S == x:\n    print("Yes")\nelse:\n    print("No")`
+  },
+  {
+    question: `Verilmiş n ədədinin palindrom olub olmadığını yoxlayan proqram`,
+    correct: `n = int(input())\nx = n\nS = 0\nwhile n > 0:\n    od = n % 10\n    n = n // 10\n    S = S * 10 + od\nif S == x:\n    print("Yes")\nelse:\n    print("No")`
+  },
+  {
+    question: `Fibonacci sırasının n həddini çap edən proqram`,
+    correct: `a = 1\nb = 1\ni = 2\nn = int(input())\nwhile i < n:\n    k = a + b\n    a = b\n    b = k\n    i = i + 1\nprint(k)`
+  },
+  {
+    question: `Verilmiş mətnində a simvollarının sayını tapan proqram`,
+    correct: `a = input()\nS = 0\nk = len(a)\nfor i in range(0, k):\n    if a[i] == 'a':\n        S = S + 1\nprint(S)`
+  },
+  {
+    question: `Verilmiş mətnə 'a' simvolunun neçə dəfə daxil olduğunu çap edən proqram`,
+    correct: `a = input()\ns = 0\nk = len(a)\nfor i in range(0, k):\n    if a[i] == 'a':\n        s += 1\nprint(s)`
+  },
+  {
+    question: `Verilmiş ədədin faktoriyalarının cəmini hesablayan proqram`,
+    correct: `n = int(input())\ns = 1\nfor i in range(1, n + 1):\n    s = s * i\nprint(s)`
+  },
+  {
+    question: `1-dən 50-ə qədər olan tək ədədlərin cəmini çap edən proqram (dəyişən: s)`,
+    correct: `s = 0\nfor i in range(1, 51):\n    if i % 2 == 0:\n        continue\n    s = s + i\nprint(s)`
+  },
+  {
+    question: `Verilmiş mətnin dəyərlərini tərsinə çap edən proqram`,
+    correct: `a = input()\ns = ''\nfor i in a:\n    s = i + s\nprint(s)`
+  },
+  {
+    question: `Verilmiş mətnin simvollarının sayını çap edən proqram`,
+    correct: `a = input()\ns = 0\nfor i in a:\n    s = s + 1\nprint(s)`
+  },
+  {
+    question: `Verilmiş mətnin simvollarını alt-alta çap edən proqram`,
+    correct: `a = input()\nfor i in a:\n    print(i)`
+  },
+  {
+    question: `1-dən 100-ə qədər olan tək ədədlərin cəmini çap edən proqram`,
+    correct: `s = 0\nfor i in range(1, 101, 2):\n    s = s + i\nprint(s)`
+  },
+  {
+    question: `b ədədinin tam bölənlərini çap edən, natamam bölənlərin cəmini tapan proqram`,
+    correct: `s = 0\nb = 16\nfor i in range(1, b + 1):\n    if b % i == 0:\n        print(i)\n    else:\n        s = s + i\nprint(s)`
+  },
+  {
+    question: `Verilmiş 3 ədədin müsbət olanlarının cəmini, mənfi olanlarının sayını çap edən proqram`,
+    correct: `s = 0\nk = 0\nfor i in range(1, 4):\n    x = int(input())\n    if x <= 0:\n        k = k + 1\n    else:\n        s = s + x\nprint(s, k)`
+  },
+  {
+    question: `Verilmiş n ədədin cəmini çap edən proqram`,
+    correct: `n = int(input())\ns = 0\nfor i in range(1, n + 1):\n    x = int(input())\n    s = s + x\nprint(s)`
+  },
+  {
+    question: `a siyahısının hər elementindən birini b siyahısına əlavə edən proqram`,
+    correct: `a = [1, 2, 3, 2, 3, 2, 4]\nb = []\nfor i in a:\n    if i not in b:\n        b.append(i)`
+  },
+  {
+    question: `a siyahısının unikal elementlərini b siyahısına əlavə edən proqram`,
+    correct: `a = [1, 2, 3, 2, 3, 2, 4]\nb = []\nfor i in a:\n    if a.count(i) == 1:\n        b.append(i)`
+  }
+  {
+    question: `İxtiyari n ədədinin cəmini çap edən proqram`,
+    correct: `n = int(input())\ns = 0\nfor i in range(1, n + 1):\n    k = int(input())\n    s = s + k\nprint(s)`
+  },
+  {
+    question: `1-dən n-ə kimi ədədlərin faktoriallarının cəmini çap edən proqram`,
+    correct: `n = int(input())\ns = 0\nk = 0\nfor i in range(1, n + 1):\n    s = s + i\n    k = k + s\nprint(k)`
+  },
+  {
+    question: `x^n hesablayan proqram`,
+    correct: `n = int(input())\nx = int(input())\ns = 1\nfor i in range(1, n + 1):\n    s = s * x\nprint(s)`
+  },
+  {
+    question: `a siyahısının mənfi elementlərinin sayını çap edən proqram`,
+    correct: `for i in range(0, len(a)):\n    if a[i] < 0:\n        j = j + 1\nprint(j)`
+  },
+  {
+    question: `a siyahısının mənfi elementlərini çap edən proqram`,
+    correct: `for i in a:\n    if i < 0:\n        print(i)`
+  },
+  {
+    question: `a siyahısının müsbət elementlərinin cəmini və mənfi olmayan elementlərinin sayını çap edən proqram`,
+    correct: `for i in a:\n    if i > 0:\n        print(i)\nb = len(a)`
+  },
+  {
+    question: `a ədədinin bölənlərini çap edən proqram`,
+    correct: `a = 24\ni = 1\nwhile i <= a // 2:\n    if a % i == 0:\n        print(i)\n    i = i + 1`
+  },
+  {
+    question: `Daxil edilən ədədin rəqəmlərinin cəmini və cüt rəqəmlərin sayını tapan proqram`,
+    correct: `a = 796\ns = 0\nm = 0\nwhile a > 0:\n    k = a % 10\n    a = a // 10\n    if k % 2 == 0:\n        s = s + k\n    else:\n        m = m + 1\nprint(s, m)`
+  },
+  {
+    question: `a ədədinin tam bölənlərini çap edən, natamam bölənləri sayan proqram`,
+    correct: `a = 24\ni = 1\nk = 0\nwhile i <= a // 2:\n    if a % i == 0:\n        print(i)\n    else:\n        k = k + 1\n    i = i + 1`
+  },
+  {
+    question: `0-dan (n-1)-ə qədər ədədlərin kvadratlarını çap edən proqram`,
+    correct: `i = 0\nwhile i < n:\n    print(i * i)\n    i = i + 1`
+  },
+  {
+    question: `1-dən n-ə kimi ədədlərin kvadratlarını çap edən proqram`,
+    correct: `i = 1\nwhile i <= n:\n    print(i * i)\n    i = i + 1`
+  },
+  {
+    question: `1-dən (n+1)-ə kimi ədədlərin kvadratlarını çap edən proqram`,
+    correct: `i = 0\nwhile i <= n:\n    print(i * i)\n    i = i + 1`
+  },
+  {
+    question: `Verilmiş ədədin rəqəmləri cəmini və rəqəmlərinin sayını tapan proqram`,
+    correct: `a = 678\nn = 0\ns = 0\nwhile a > 0:\n    k = a % 10\n    a = a // 10\n    s = s + k\n    n = n + 1\nprint(s, n)`
+  }
 ];
+
 
 let current = 0;
 let userAnswers = [];
