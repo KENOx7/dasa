@@ -46,8 +46,6 @@
       user-select: none;
       width: 100%;
       word-break: break-word;
-      display: block;
-      pointer-events: auto;
     }
     .option:hover {
       background: #444;
@@ -131,26 +129,31 @@ function showQuestion() {
     ...shuffle(otherOptions).slice(0, 3)
   ]);
 
-  document.getElementById('quiz').innerHTML = `
+  const quizContainer = document.getElementById('quiz');
+  quizContainer.innerHTML = `
     <div class="question">Sual ${current + 1}: ${q.question}</div>
     ${shuffled.map(option => `
-      <div class="option" onclick="selectOption(this, \`${option.replace(/`/g, "\\`")}\`)">${option}</div>
+      <div class="option">${option}</div>
     `).join('')}
   `;
-}
 
-function selectOption(element, selectedCode) {
-  const correct = questions[current].correct;
   const options = document.querySelectorAll('.option');
   options.forEach(opt => {
-    if (opt.textContent.trim() === correct.trim()) {
+    opt.addEventListener('click', () => selectOption(opt, q.correct));
+  });
+}
+
+function selectOption(element, correctCode) {
+  const options = document.querySelectorAll('.option');
+  options.forEach(opt => {
+    if (opt.textContent.trim() === correctCode.trim()) {
       opt.classList.add('correct');
     } else if (opt === element) {
       opt.classList.add('wrong');
     }
-    opt.onclick = null;
+    opt.style.pointerEvents = 'none'; // Disable clicking once option is selected
   });
-  userAnswers.push(selectedCode.trim() === correct.trim());
+  userAnswers.push(element.textContent.trim() === correctCode.trim());
   setTimeout(() => {
     current++;
     showQuestion();
