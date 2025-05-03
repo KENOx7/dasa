@@ -68,7 +68,7 @@
 
 <script>
 const questions = [
-  {
+{
     question: `Verilmiş natural ədədin tərsini çap edən proqram`,
     correct: `a = int(input())\nS = 0\nwhile a > 0:\n    k = a % 10\n    a = a // 10\n    S = S * 10 + k\nprint(S)`
   },
@@ -121,7 +121,7 @@ const questions = [
     correct: `s = 0\nfor i in range(1, 51):\n    if i % 2 == 0:\n        continue\n    s = s + i\nprint(s)`
   },
   {
-    question: `Verilmiş mətninin dəyərlərini tərsinə çap edən proqram`,
+    question: `Verilmiş mətnin dəyərlərini tərsinə çap edən proqram`,
     correct: `a = input()\ns = ''\nfor i in a:\n    s = i + s\nprint(s)`
   },
   {
@@ -154,21 +154,154 @@ const questions = [
   },
   {
     question: `a siyahısının unikal elementlərini b siyahısına əlavə edən proqram`,
-    correct: `a = [1, 2, 3, 2, 3, 2, 4]\nb = []\nfor i in a:\n    if i not in b:\n        b.append(i)`
+    correct: `a = [1, 2, 3, 2, 3, 2, 4]\nb = []\nfor i in a:\n    if a.count(i) == 1:\n        b.append(i)`
+  },
+  {
+    question: `a siyahısının təkrarlanan elementlərindən hər birindən birini b siyahısına əlavə edən proqram`,
+    correct: `a = [1, 2, 3, 2, 3, 2, 4]\nb = []\nfor i in a:\n    if a.count(i) > 1 and i not in b:\n        b.append(i)`
+  },
+  {
+    question: `Fibonacci sırasının ilk n elementini çap edən proqram`,
+    correct: `n = int(input())\na = [1, 1]\nfor i in range(2, n):\n    a.append(a[i-1] + a[i-2])\nprint(a)`
+  },
+  {
+    question: `Daxil edilmiş ədədin tam bölənlərini çap edən proqram`,
+    correct: `n = int(input())\nn1 = n // 2\nfor i in range(1, n1 + 1):\n    if n % i == 0:\n        print(i)\nprint(n)`
+  },
+  {
+    question: `Verilmiş iki ədədin ƏBOB-unu hesablayan proqram`,
+    correct: `def f(a, b):\n    if a == b:\n        s = a\n    elif a > b:\n        s = f(a - b, b)\n    elif a < b:\n        s = f(a, b - a)\n    return s\n\nk = f(21, 56)\nprint(k)`
+  },
+  {
+    question: `Proqramın 1-ci hədləri olan və vurğu b olan ədədi silsilənin n-ci həddini t siyahısına əlavə edən proqram`,
+    correct: `def f(n):\n    if n == 1:\n        s = a\n    else:\n        s = f(n - 1) + b\n    t.append(s)\n    return s\n\na = int(input())\nb = int(input())\nn = int(input())\nt = []\nf(n)`
+  },
+  {
+    question: `Verilmiş sətirin polindrom olub olmadığını müəyyən edən proqram`,
+    correct: `a = input()\nk = list(a)\nk.reverse()\nk = ''.join(k)\nif a == k:\n    print("Yes")\nelse:\n    print("No")`
+  },
+  {
+    question: `Verilmiş ədədin polindrom olub olmadığını müəyyən edən proqram`,
+    correct: `n = int(input())\nk = list(n)\nk.reverse()\nk = ''.join(k)\nif n == k:\n    print("Yes")\nelse:\n    print("No")`
+  },
+  {
+    question: `Verilmiş ədədin Pifaqor ədədləri olub olmadığını müəyyən edən proqram`,
+    correct: `a, b, c = map(int, input().split())\nif a**2 + b**2 == c**2:\n    print("Yes")\nelif a**2 + c**2 == b**2:\n    print("Yes")\nelif b**2 + c**2 == a**2:\n    print("Yes")\nelse:\n    print("No")`
+  },
+  {
+    question: `Verilmiş ədədin armstrong ədədi olub olmadığını müəyyən edən proqram`,
+    correct: `n = int(input())\na = n // 100\nb = (n // 10) % 10\nc = n % 10\nif a**3 + b**3 + c**3 == n:\n    print("Yes")\nelse:\n    print("No")`
+  },
+  {
+    question: `1-dən n-ə kimi ədədlərin hasilini çap edən proqram`,
+    correct: `n = int(input())\ns = 1\nfor i in range(1, n + 1):\n    s = s * i\nprint(s)`
+  },
+  {
+    question: `a siyahısının təkrarlanan elementlərindən hər birindən birini b siyahısına əlavə edən proqram`,
+    correct: `a = [1, 2, 3, 2, 3, 2, 4]\nb = []\nfor i in a:\n    if a.count(i) > 1 and i not in b:\n        b.append(i)`
+  },
+  {
+    question: `Fibonacci sırasının ilk n elementini çap edən proqram`,
+    correct: `n = int(input())\na = [1, 1]\nfor i in range(2, n):\n    a.append(a[i-1] + a[i-2])\nprint(a)`
+  },
+  {
+    question: `Daxil edilmiş ədədin tam bölənlərini çap edən proqram`,
+    correct: `n = int(input())\nn1 = n // 2\nfor i in range(1, n1 + 1):\n    if n % i == 0:\n        print(i)\nprint(n)`
+  },
+  {
+    question: `Verilmiş iki ədədin ƏBOB-unu hesablayan proqram`,
+    correct: `def f(a, b):\n    if a == b:\n        s = a\n    elif a > b:\n        s = f(a - b, b)\n    elif a < b:\n        s = f(a, b - a)\n    return s\n\nk = f(21, 56)\nprint(k)`
+  },
+  {
+    question: `Proqramın 1-ci hədləri olan və vurğu b olan ədədi silsilənin n-ci həddini t siyahısına əlavə edən proqram`,
+    correct: `def f(n):\n    if n == 1:\n        s = a\n    else:\n        s = f(n - 1) + b\n    t.append(s)\n    return s\n\na = int(input())\nb = int(input())\nn = int(input())\nt = []\nf(n)`
+  },
+  {
+    question: `Verilmiş sətirin polindrom olub olmadığını müəyyən edən proqram`,
+    correct: `a = input()\nk = list(a)\nk.reverse()\nk = ''.join(k)\nif a == k:\n    print("Yes")\nelse:\n    print("No")`
+  },
+  {
+    question: `Verilmiş ədədin polindrom olub olmadığını müəyyən edən proqram`,
+    correct: `n = int(input())\nk = list(n)\nk.reverse()\nk = ''.join(k)\nif n == k:\n    print("Yes")\nelse:\n    print("No")`
+  },
+  {
+    question: `Verilmiş ədədin Pifaqor ədədləri olub olmadığını müəyyən edən proqram`,
+    correct: `a, b, c = map(int, input().split())\nif a**2 + b**2 == c**2:\n    print("Yes")\nelif a**2 + c**2 == b**2:\n    print("Yes")\nelif b**2 + c**2 == a**2:\n    print("Yes")\nelse:\n    print("No")`
+  },
+  {
+    question: `Verilmiş ədədin armstrong ədədi olub olmadığını müəyyən edən proqram`,
+    correct: `n = int(input())\na = n // 100\nb = (n // 10) % 10\nc = n % 10\nif a**3 + b**3 + c**3 == n:\n    print("Yes")\nelse:\n    print("No")`
+  },
+  {
+    question: `1-dən n-ə kimi ədədlərin hasilini çap edən proqram`,
+    correct: `n = int(input())\ns = 1\nfor i in range(1, n + 1):\n    s = s * i\nprint(s)`
   }
 ];
 
-let currentQuestion = 0;
-let score = 0;
+let current = 0;
+let userAnswers = [];
+
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
 
 function showQuestion() {
-  const questionContainer = document.getElementById('quiz');
-  const q = questions[currentQuestion];
+  if (current >= questions.length) return showResults();
 
-  questionContainer.innerHTML = `
-    <div class="question">${q.question}</div>
-    <div class="option">${q.correct}</div>
+  const q = questions[current];
+  const otherOptions = questions
+    .filter((_, idx) => idx !== current)
+    .map(q => q.correct);
+  const shuffled = shuffle([
+    q.correct,
+    ...shuffle(otherOptions).slice(0, 3)
+  ]);
+
+  const quizContainer = document.getElementById('quiz');
+  quizContainer.innerHTML = `
+    <div class="question">Sual ${current + 1}: ${q.question}</div>
+    ${shuffled.map(option => `
+      <div class="option">${option}</div>
+    `).join('')}
   `;
+
+  const options = document.querySelectorAll('.option');
+  options.forEach(opt => {
+    opt.addEventListener('click', () => selectOption(opt, q.correct));
+  });
+}
+
+function selectOption(element, correctCode) {
+  const options = document.querySelectorAll('.option');
+  options.forEach(opt => {
+    if (opt.textContent.trim() === correctCode.trim()) {
+      opt.classList.add('correct');
+    } else if (opt === element) {
+      opt.classList.add('wrong');
+    }
+    opt.style.pointerEvents = 'none'; // Disable clicking once option is selected
+  });
+  userAnswers.push(element.textContent.trim() === correctCode.trim());
+  setTimeout(() => {
+    current++;
+    showQuestion();
+  }, 1000);
+}
+
+function showResults() {
+  const total = questions.length;
+  let html = `<h2>Nəticə</h2>`;
+  questions.forEach((q, i) => {
+    html += `
+      <div class="question">Sual ${i + 1}: ${q.question}</div>
+      <div class="option ${userAnswers[i] ? 'correct' : 'wrong'}">
+        ${q.correct}
+      </div>
+      <br/>
+    `;
+  });
+  html += `<div class="result">Düzgün cavabların sayı: ${userAnswers.filter(Boolean).length} / ${total}</div>`;
+  document.getElementById('quiz').innerHTML = html;
 }
 
 showQuestion();
